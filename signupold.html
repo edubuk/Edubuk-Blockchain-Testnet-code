@@ -1,0 +1,2829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style1.css">
+    <title>Edubuk</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+
+    <!-- <script type="text/javascript" src="./main2.js"></script> -->
+    <!-- <script type="text/javascript" src="./App.js"></script> -->
+   
+</head>
+<body>
+    <button id="btn-login">Login by Metamask Wallet</button>
+    <button id="btn-logout">Logout</button>
+    <script type="text/javascript" src="./main2.js"></script>
+
+    
+    <!-- <div class="left-nav">
+
+        <ul>
+            <li><a href="#section_01">Sign Up Here using Metamask Wallet Address</a></li>
+            <li><a href="#section_02">Companies and Employees: Login Here</a></li>
+            <li><a href="#section_03">Institutes and Students: Login Here</a></li>
+            <li><a href="#section_04">Experts and Learners: Login Here</a></li>
+            <li><a href="#section_05">For Employees: Add Your Skills</a></li>
+            <li><a href="#section_06">For Employees: Add Your Work Experience</a></li>
+            <li><a href="#section_07">For Students: Add Academic Grades</a></li>
+            <li><a href="#section_08">For Students: Add Internship Information</a></li>
+            <li><a href="#section_09">For Learners: Add Online Courses Completed</a></li>
+            <li><a href="#section_10">For Students and Learners: Add MIIT Screening Results</a></li>
+            <li><a href="#section_11">For Students and Learners: Add CLPs as per Career Paths</a></li>
+            <li><a href="#section_12">For Companies: Approve Employee's Work Experience</a></li>
+            <li><a href="#section_13">For Companies: Approve Employee Skills</a></li>
+            <li><a href="#section_14">For Companies: Approve Employee as a Manager</a></li>
+            <li><a href="#section_15">For Institutes: Approve Student's Internship</a></li>
+            <li><a href="#section_16">For Institutes: Approve Academic Grades</a></li>
+            <li><a href="#section_17">For Institutes: Approve Dean's Profile</a></li>
+            <li><a href="#section_18">For Experts: Approve Learners's Online Courses Completed</a></li>
+            <li><a href="#section_19">For Edubuk as a Company: Approve Expert's Profile</a></li>
+            <li><a href="#section_20">For Edubuk as a Company: Approve MIIT Screening Results</a></li>
+            <li><a href="#section_21">For Edubuk as a Company: Approve CLPs</a></li>
+            <li><a href="#section_22">Check whether the wallet address is a Company or Employee</a></li>
+            <li><a href="#section_23">Check whether the wallet address is an Institute or a Student</a></li>
+            <li><a href="#section_24">Check whether the wallet address is an Expert or a Learner</a></li>
+            <li><a href="#section_25">Check Companies' Information</a></li>            
+            <li><a href="#section_26">Check Employees' Information</a></li>
+            <li><a href="#section_27">Check Employees' Work Experiences</a></li>
+            <li><a href="#section_28">Check Employee's Skills</a></li>
+            <li><a href="#section_29">Check Institutes' Information</a></li>
+            <li><a href="#section_30">Check Students' Information</a></li>
+            <li><a href="#section_31">Check Students' Grades</a></li>
+            <li><a href="#section_32">Check Students' Internships information</a></li>
+            <li><a href="#section_33">Check Experts' Information</a></li>
+            <li><a href="#section_34">Check Learners' Information</a></li>
+            <li><a href="#section_35">Check Learner's Online Courses Studied</a></li>
+            <li><a href="#section_36">Check Students' & Learners' MIIT Screening Profiles</a></li>
+            <li><a href="#section_37">Check Students' & Learners' Customized Learning Plans</a></li>
+            <li><a href="#section_38">Updated Wallet Address</a></li>
+            <li><a href="#section_39">Convert Wallet Address to Unique ID</a></li>
+            </ul>
+    </div> -->
+     
+    <div class="container" id="section_01">
+        <div class="title">Sign Up Here using Metamask Wallet Address</div>
+        <form>
+            <!-- onsubmit="getEmployeeData()" -->
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        email
+                    </span>
+                    <input id="email1" type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        name
+                    </span>
+                    <input id="name1" type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        acc_type
+                    </span>
+                    <input id="acctype1" type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="button">
+                    <input id="data" type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <!-- <script>
+            var contract;
+
+            $(document).ready(function()
+            {
+                web3 = new web3(web3.currentprovider);
+                var address = "0x5d003c4f3b1b082213c37f38e5cfe05ab8a897d1";
+                var abi = [
+    {
+      "constant": true,
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "student_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "issue_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "valid_till",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "issuer",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "linked_clp_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "add_certification_clp",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "student_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "issue_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "valid_till",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "issuer",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "linked_grade_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "add_certification_grade",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "student_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "issue_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "valid_till",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "issuer",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "linked_miitprofile_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "add_certification_miitprofile",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "employee_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "issue_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "valid_till",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "issuer",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "linked_skill_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "add_certification_skill",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "studentid",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "clp_name",
+          "type": "string"
+        }
+      ],
+      "name": "add_clp",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "employee_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "company_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "add_employee",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "employee_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "starting_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "ending_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "role",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "company_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "add_experience",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "studentid",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "grade_name",
+          "type": "string"
+        }
+      ],
+      "name": "add_grade",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "student_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "starting_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "ending_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "role",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "institute_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "add_internship",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "studentid",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "miitprofile_name",
+          "type": "string"
+        }
+      ],
+      "name": "add_miitprofile",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "learner_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "starting_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "ending_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "role",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "expert_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "add_project",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "employeeid",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "skill_name",
+          "type": "string"
+        }
+      ],
+      "name": "add_skill",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "address_to_id",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "dean_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve_dean",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "employee_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "company_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve_employee",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "exp_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "company_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve_experience",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "expert_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve_expert",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "int_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "institute_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve_internship",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "employee_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve_manager",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "proj_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "expert_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve_project",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "certifications",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "issue_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "valid_till",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "issuer",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "clps",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "bool",
+          "name": "verified",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "companies",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "employee_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "wallet_address",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "email_to_address",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "employees",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "company_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "role",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "wallet_address",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_employed",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_manager",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_approved",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "num_skill",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "student_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "clp_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "endorsing_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "comment",
+          "type": "string"
+        }
+      ],
+      "name": "endorse_clp",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "student_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "grade_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "endorsing_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "comment",
+          "type": "string"
+        }
+      ],
+      "name": "endorse_grade",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "student_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "miitprofile_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "endorsing_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "comment",
+          "type": "string"
+        }
+      ],
+      "name": "endorse_miitprofile",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "employee_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "skill_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "endorsing_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "comment",
+          "type": "string"
+        }
+      ],
+      "name": "endorse_skill",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "endorsments",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "endorser_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "comment",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "experiences",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "starting_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "ending_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "employee_name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "role",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "company_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_approved",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "experts",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "wallet_address",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_expertadmin",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "grades",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "bool",
+          "name": "verified",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "institutes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "wallet_address",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_dean",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "internships",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "starting_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "ending_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "role",
+          "type": "string"
+        },
+        {
+          "internalType": "bool",
+          "name": "currently_intern",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "institute_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_approved",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "is_company",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "is_expert",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "is_institute",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "learners",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "institute_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "expert_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "wallet_address",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_alearner",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_expert",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "num_skill",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "email",
+          "type": "string"
+        }
+      ],
+      "name": "logincompany",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "email",
+          "type": "string"
+        }
+      ],
+      "name": "loginexpert",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "email",
+          "type": "string"
+        }
+      ],
+      "name": "logininstitute",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "miitprofiles",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "bool",
+          "name": "verified",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "projects",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "starting_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "ending_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "role",
+          "type": "string"
+        },
+        {
+          "internalType": "bool",
+          "name": "currently_enrolled",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "expert_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_approved",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "email",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "acc_type",
+          "type": "string"
+        }
+      ],
+      "name": "sign_up",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "skills",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "bool",
+          "name": "verified",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "students",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "institute_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "edubukcompany_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "wallet_address",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_collegestudent",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_dean",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "is_edubukadmin",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "num_degree",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "num_skill",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "num_miitprofile",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "num_clp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "num_grade",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "num_internship",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "email",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "new_address",
+          "type": "address"
+        }
+      ],
+      "name": "update_wallet_address",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ];
+                
+            contract = new web3.eth.contract(abi, address);
+            })
+
+
+
+            $('#data').click(function()
+            {
+                
+                web3.eth.getaccounts().then(function(accounts)
+                {
+                    var accounts = accounts[0];
+                    return contract.methods.email1(ads).send({from: acc});
+                    return contract.methods.name1(ads).send({from: acc});
+                    return contract.methods.acctype1(ads).send({from: acc});
+                }).then(function(tx)
+                {
+                    console.log (tx);
+
+                }).catch (function(tx)
+                {
+                    console.log(tx);
+                })
+            })
+
+        </script>
+ -->
+
+
+
+    <div class="container" id="section_02">
+        <div class="title">Companies and Employees: Login Here</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+    <div class="container" id="section_03">
+        <div class="title">Institutes and Students: Login Here</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+    <div class="container" id="section_04">
+        <div class="title">Experts and Learners: Login Here</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+    <div class="container" id="section_05">
+        <div class="title">For Employees: Add Your Skills</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        employee_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        skill_name
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="section_06">
+        <div class="title">For Employees: Add Your Work Experience</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        employee_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        strin_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        ending_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        role
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        company_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                    
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="section_07">
+        <div class="title">For Students: Add Academic Grades</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        student_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        grade_name
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="section_08">
+        <div class="title">For Students: Add Internship Information</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        studentid
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        Enter Text_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        ending_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        role
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        institute_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                    
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="section_09">
+        <div class="title">For Learners: Add Online Courses Completed</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        learner_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        Enter Text_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        ending_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        role
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        expert_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                    
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="section_10">
+        <div class="title">For Students and Learners: Add MIIT Screening Results</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        student_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        miit_profilename
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+ 
+    <div class="container" id="section_11">
+        <div class="title">For Students and Learners: Add CLPs Chosen as per Career Paths</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        studentid
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        clp_name
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container" id="section_12">
+        <div class="title">For Companies: Approve Employee's Work Experience</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        exp_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        company_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container" id="section_13">
+        <div class="title">For Companies: Approve Employee Skills</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        employee_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        skill_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        endorsing_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        comment
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container" id="section_14">
+        <div class="title">For Companies: Approve Employee as a Manager</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        employee_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container" id="section_15">
+        <div class="title">For Institutes: Approve Student's Internship</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        int_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        institute_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container" id="section_16">
+        <div class="title">For Institutes: Approve Academic Grades</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        student_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        grade_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        endorsing_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        comment
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="section_17">
+        <div class="title">For Institutes: Approve Dean's Profile</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        dean_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container" id="section_18">
+        <div class="title">For Experts: Approve Learners's Online Courses Completed</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        proj_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        expert_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container" id="section_19">
+        <div class="title">For Edubuk as a Company: Approve Expert's Profile</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        expert_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container" id="section_20">
+        <div class="title">For Edubuk as a Company: Approve MIIT Screening Results</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        student_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        miitprofile_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        endorsing_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        comment
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container" id="section_21">
+        <div class="title">For Edubuk as a Company: Approve Customized Learning Plans</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        student_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        clp_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        endorsing_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        comment
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container" id="section_22">
+        <div class="title">Check whether the wallet address is a Company or an Employee</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+    
+    <div class="container" id="section_23">
+        <div class="title">Check whether the wallet address is an Institute or a Student</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+   
+    <div class="container" id="section_24">
+        <div class="title">Check whether the wallet address is an Expert or a Learner</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+    <div class="container" id="section_25">
+        <div class="title">Check Companies' Information</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+    <div class="container" id="section_26">
+        <div class="title">Check Employees' Information</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+    
+    <div class="container" id="section_27">
+        <div class="title">Check Employees' Work Experiences</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+    <div class="container" id="section_28">
+        <div class="title">Check Employee's Skills</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+    <div class="container" id="section_29">
+        <div class="title">Check Institutes' Information</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+    <div class="container" id="section_30">
+        <div class="title">Check Students' Information</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+    <div class="container" id="section_31">
+        <div class="title">Check Students' Grades</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+   
+    <div class="container" id="section_32">
+        <div class="title">Check Students' Internships information</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+    <div class="container" id="section_33">
+        <div class="title">Check Experts' Information</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+    
+    <div class="container" id="section_34">
+        <div class="title">Check Learners' Information</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+   
+    <div class="container" id="section_35">
+        <div class="title">Check Learner's Online Courses Studied</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+    
+    <div class="container" id="section_36">
+        <div class="title">Check Students' & Learners' MIIT Screening Profiles</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+    <div class="container" id="section_37">
+        <div class="title">Check Students' & Learners' Customized Learning Plans</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+   
+    <div class="container" id="section_38">
+        <div class="title">Updated Wallet Address</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        email
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        new_address
+                    </span>
+                    <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="section_39">
+        <div class="title">Convert Wallet Address to Unique ID</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain"/>
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+    
+
+
+<!--
+
+
+    <div class="container" id="section_01">
+        <div class="title">Add_certification_clp</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        student_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        url
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        issue_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        valid_till
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        name
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        issuer
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        linked_clp_id
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+ <div class="container" id="section_02">
+        <div class="title">Add_certification_grade</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        student_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        url
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        issue_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        valid_till
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        name
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        issuer
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        linked_clp_id
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+ <div class="container" id="section_03">
+        <div class="title">Add_certification_miitprofile</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        student_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        url
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        issue_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        valid_till
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        name
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        issuer
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        linked_clp_id
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="section_04">
+        <div class="title">Add_certification_skill</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        student_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        url
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        issue_date
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        valid_till
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        name
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        issuer
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                    
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        linked_clp_id
+                    </span>
+                    <input type="text" placeholder="Enter Text" required/>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+<div class="container" id="section_06">
+        <div class="title">Add_empoyee</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        employee_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        company_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+                    
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+<div class="container" id="section_26">
+        <div class="title">Certifications</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+
+<div class="container" id="section_29">
+        <div class="title">Email_to_address</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+<div class="container" id="section_14">
+        <div class="title">Approve_employee</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">
+                        employee_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">
+                        company_id
+                    </span>
+                    <input type="text" placeholder="Enter a Number" required/>
+
+                </div>
+                <div class="button">
+                    <input type="submit" value="Record on Blockchain" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+<div class="container" id="section_31">
+        <div class="title">Endorsments</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                   <input type="text" placeholder="address" required/>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="Retrieve from Blockchain" />
+                    
+                </div>
+            </div>
+        </form>
+        <div class="data_show">
+            <p>Response will show here</p>
+            
+        </div>
+    </div>
+
+-->
+
+
+</body>
+</html>
+
